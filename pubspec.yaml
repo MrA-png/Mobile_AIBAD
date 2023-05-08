@@ -38,6 +38,11 @@ dependencies:
   flutter_riverpod: ^2.1.3
   chat_gpt_sdk: ^2.0.2
   speech_to_text: ^6.1.1
+  google_fonts: any
+  http: any
+  #random_color: 1.0.6
+  random_color: ^1.0.6-nullsafety
+  share: ^2.0.4
 
 dev_dependencies:
   flutter_test:

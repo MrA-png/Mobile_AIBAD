@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 class ChatItem extends StatelessWidget {
   final String text;
   final bool isMe;
+
   const ChatItem({
     super.key,
     required this.text,
@@ -82,9 +83,10 @@ class ProfileContainer extends StatelessWidget {
         ),
       ),
       child: Icon(
-        isMe ? Icons.person : Icons.computer,
+        isMe ? Icons.person : Icons.account_tree_rounded,
         color: Theme.of(context).colorScheme.onSecondary,
       ),
+
     );
   }
 }

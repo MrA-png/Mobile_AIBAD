@@ -13,7 +13,7 @@
     </queries>
 
     <application
-        android:label="mobile_aibad"
+        android:label="AIBAD"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

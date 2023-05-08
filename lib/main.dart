@@ -3,8 +3,8 @@ import 'package:mobile_aibad/providers/active_theme_provider.dart';
 import 'package:mobile_aibad/screens/chat_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_aibad/splashscreen.dart';
-
 import 'constants/themes.dart';
+
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }

@@ -17,14 +17,41 @@ class ChatScreen extends StatelessWidget {
           children: [
             Expanded(
               child: Consumer(builder: (context, ref, child) {
-                final chats = ref.watch(chatsProvider).reversed.toList();
+                final chats = ref.watch(chatsProvider);
                 return ListView.builder(
-                  reverse: true,
-                  itemCount: chats.length,
-                  itemBuilder: (context, index) => ChatItem(
-                    text: chats[index].message,
-                    isMe: chats[index].isMe,
-                  ),
+                  // reverse: true,
+                  itemCount: chats.length + 3,
+                  itemBuilder:(context, index) {
+                    if (index == 0) {
+                      // Tampilkan pesan sapaan jika index == 0
+                      return ChatItem(
+                        text: "Hi, selamat datang di AIBAD!",
+                        isMe: false,
+                      );
+                    }if (index == 1) {
+                      // Tampilkan pesan sapaan jika index == 0
+                      return ChatItem(
+                        text: "Saya akan membantu kamu mencari Quote tentang agile'",
+                        isMe: false,
+                      );
+                    }if (index == 2) {
+                      // Tampilkan pesan sapaan jika index == 0
+                      return ChatItem(
+                        text: "Quote Agile seperti apa yang anda cari?",
+                        isMe: false,
+                      );
+                    } else {
+                      // Tampilkan pesan chat sebelumnya
+                      return ChatItem(
+                        text: chats[index - 3].message,
+                        isMe: chats[index - 3].isMe,
+                      );
+                    }
+                  }
+                  // => ChatItem(
+                  //   text: chats[index].message,
+                  //   isMe: chats[index].isMe,
+                  // ),
                 );
               }),
             ),
@@ -36,6 +63,7 @@ class ChatScreen extends StatelessWidget {
               height: 10,
             ),
           ],
-        ));
+        )
+    );
   }
 }
