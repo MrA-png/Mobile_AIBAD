@@ -21,7 +21,7 @@ class TextAndVoiceField extends ConsumerStatefulWidget {
 class _TextAndVoiceFieldState extends ConsumerState<TextAndVoiceField> {
   InputMode _inputMode = InputMode.voice;
   final _messageController = TextEditingController();
-  //final AIHandler _openAI = AIHandler();
+  final AIHandler _openAI = AIHandler();
   final VoiceHandler voiceHandler = VoiceHandler();
   var _isReplying = false;
   var _isListening = false;
@@ -112,9 +112,9 @@ class _TextAndVoiceFieldState extends ConsumerState<TextAndVoiceField> {
     addToChatList(message, true, DateTime.now().toString());
     addToChatList('Typing...', false, 'typing');
     setInputMode(InputMode.voice);
-    //final aiResponse = await _openAI.getResponse(message);
+    final aiResponse = await _openAI.getResponse(message);
     removeTyping();
-    //addToChatList(aiResponse, false, DateTime.now().toString());
+    addToChatList(aiResponse, false, DateTime.now().toString());
     setReplyingState(false);
   }
 
