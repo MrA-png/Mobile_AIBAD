@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 class AIHandler {
 
   final _openAI = OpenAI.instance.build(
-    token: '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',
+    token: '<Token-API>',
     baseOption: HttpSetup(
       receiveTimeout: const Duration(seconds: 60),
       connectTimeout: const Duration(seconds: 60),
