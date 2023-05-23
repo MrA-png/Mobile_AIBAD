@@ -30,6 +30,10 @@ class _HomePageState extends State<HomePage> {
 
   RandomColor _randomColor = RandomColor();
 
+  // void shareQuote(String quote) {
+  //   Share.share(quote);
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,21 +93,21 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                           ),
-                        InkWell(
-                          // onTap: onLikeClick,
-                          child: Container(
-                            margin: EdgeInsets.only(left: 10),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(width: 1, color: Colors.white)),
-                            padding: EdgeInsets.all(10),
-                            child: Icon(
-                              Icons.favorite,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
+                        // InkWell(
+                        //   // onTap: onLikeClick,
+                        //   child: Container(
+                        //     margin: EdgeInsets.only(left: 10),
+                        //     decoration: BoxDecoration(
+                        //         shape: BoxShape.circle,
+                        //         border:
+                        //             Border.all(width: 1, color: Colors.white)),
+                        //     padding: EdgeInsets.all(10),
+                        //     child: Icon(
+                        //       Icons.favorite,
+                        //       color: Colors.white,
+                        //     ),
+                        //   ),
+                        // ),
                         InkWell(
                           // onTap: onShareClick,
                           child: Container(
@@ -119,7 +123,9 @@ class _HomePageState extends State<HomePage> {
                                 color: Colors.white,
                               ),
                               onPressed:(){
-                                  Share.share("sebentar yah masih belum bisa hehehe:V");
+                                var model = snapshot.data?[controller.page!.toInt()];
+                                Share.share('${model["text"]} - ${model["author"]}');
+                                  // Share.share(<isi quote>);
                               },
                             )
                           ),

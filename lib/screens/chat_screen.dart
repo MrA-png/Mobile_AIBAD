@@ -45,6 +45,7 @@ class ChatScreen extends StatelessWidget {
                       return ChatItem(
                         text: chats[index - 3].message,
                         isMe: chats[index - 3].isMe,
+
                       );
                     }
                   }

@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 class AIHandler {
 
   final _openAI = OpenAI.instance.build(
-    token: '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',
+    token: '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',
     baseOption: HttpSetup(
       receiveTimeout: const Duration(seconds: 60),
       connectTimeout: const Duration(seconds: 60),
@@ -20,9 +20,10 @@ class AIHandler {
 
 
       final request = ChatCompleteText(messages: [
-        Map.of({"role": "user", "content": 'Hallo'})
-      ], maxToken: 200, model: ChatModel.gpt_4);
+        Map.of({"role": "user", "content": message})
+      ], maxToken: 200, model: ChatModel.gptTurbo0301);
 
+    // ], maxToken: 200, model: ChatModel.gpt_4);
       // final request = ChatCompleteText(messages: [
       //   Map.of({"role": "user", "content": message})
       // ], maxToken: 200, model: kChatGptTurbo0301Model);
@@ -30,17 +31,17 @@ class AIHandler {
       // maxToken: 200, model: kChatGptTurbo0301Model);
 
 
-      final response = await _openAI.onChatCompletion(request: request);
-      for (var element in response!.choices) {
-        print("data -> ${element.message?.content}");
-      }
-
-
       // final response = await _openAI.onChatCompletion(request: request);
-      // if (response != null && response.choices.isNotEmpty) {
-      //   //return response.choices[0]?.message?.content?.trim() ?? 'Something went wrong';
-      //   return response.choices[0].message.content.trim() ?? ;
+      // for (var element in response!.choices) {
+      //   print("data -> ${element.message?.content}");
       // }
+
+
+      final response = await _openAI.onChatCompletion(request: request);
+      if (response != null ) {
+        return response.choices[0]?.message?.content?.trim() ?? 'Something went wrong';
+        // return response.choices[0].message.content.trim() ?? ;
+      }
 
       return 'Some thing went wrong';
     } catch (e) {
@@ -52,8 +53,8 @@ class AIHandler {
   //   var close = _openAI.close();
   // }
 
-  void close() {
-    // TODO: implement close
-  }
+  // void close() {
+  //   // TODO: implement close
+  // }
 
 }
