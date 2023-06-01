@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 class AIHandler {
 
   final _openAI = OpenAI.instance.build(
-    token: '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',
+    token: '<token-API>',
     baseOption: HttpSetup(
       receiveTimeout: const Duration(seconds: 60),
       connectTimeout: const Duration(seconds: 60),
@@ -17,7 +17,6 @@ class AIHandler {
 
   Future<String> getResponse(String message) async {
     try {
-
 
       final request = ChatCompleteText(messages: [
         Map.of({"role": "user", "content": message})
@@ -30,12 +29,10 @@ class AIHandler {
 
       // maxToken: 200, model: kChatGptTurbo0301Model);
 
-
       // final response = await _openAI.onChatCompletion(request: request);
       // for (var element in response!.choices) {
       //   print("data -> ${element.message?.content}");
       // }
-
 
       final response = await _openAI.onChatCompletion(request: request);
       if (response != null ) {
