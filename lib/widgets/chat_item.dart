@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:share/share.dart';
 
 class ChatItem extends StatelessWidget {
   final String text;
   final bool isMe;
+  final bool onShare;
 
   const ChatItem({
     super.key,
     required this.text,
     required this.isMe,
+    this.onShare = false,
   });
 
   @override
@@ -42,12 +45,34 @@ class ChatItem extends StatelessWidget {
                 bottomRight: Radius.circular(isMe ? 0 : 15),
               ),
             ),
-            child: Text(
-              text,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onSecondary,
-              ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: SelectableText(
+                    text,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSecondary,
+                    ),
+                  ),
+                ),
+                if (onShare &&!isMe)
+                  IconButton(
+                    onPressed: () {
+                      Share.share(text);
+                    },
+                    icon: const Icon(
+                      Icons.share,
+                      color: Colors.white,
+                    ),
+                  ),
+              ],
             ),
+            // child: SelectableText(
+            //   text,
+            //   style: TextStyle(
+            //     color: Theme.of(context).colorScheme.onSecondary,
+            //   ),
+            // ),
           ),
           if (isMe) const SizedBox(width: 15),
           if (isMe) ProfileContainer(isMe: isMe),

@@ -38,7 +38,7 @@ class QuoteWidget extends StatelessWidget {
           SizedBox(
             height: 30,
           ),
-          Text(
+          SelectableText(
             quote,
             style: GoogleFonts.lato(
               textStyle: TextStyle(color: Colors.white, fontSize: 30),
@@ -47,7 +47,7 @@ class QuoteWidget extends StatelessWidget {
           SizedBox(
             height: 30,
           ),
-          Text(
+          SelectableText(
             author,
             style: GoogleFonts.lato(
               textStyle:

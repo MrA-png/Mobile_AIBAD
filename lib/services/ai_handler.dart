@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 class AIHandler {
 
   final _openAI = OpenAI.instance.build(
-    token: '<token-API>',
+    token: '<Token-API>',
     baseOption: HttpSetup(
       receiveTimeout: const Duration(seconds: 60),
       connectTimeout: const Duration(seconds: 60),
@@ -19,7 +19,7 @@ class AIHandler {
     try {
 
       final request = ChatCompleteText(messages: [
-        Map.of({"role": "user", "content": message})
+        Map.of({"role": "user", "content": "quote "+ message})
       ], maxToken: 200, model: ChatModel.gptTurbo0301);
 
     // ], maxToken: 200, model: ChatModel.gpt_4);

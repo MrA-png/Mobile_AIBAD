@@ -12,6 +12,7 @@ class ChatModel {
     required this.isMe,
   });
 
+
   // Map<String, dynamic> toJson() {
   //   return {
   //     'id': id,

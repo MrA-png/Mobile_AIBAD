@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_aibad/providers/chats_provider.dart';
 import 'package:mobile_aibad/widgets/chat_item.dart';
+import 'package:share/share.dart';
 
 import '../widgets/my_app_bar.dart';
 import '../widgets/text_and_voice_field.dart';
@@ -31,21 +32,25 @@ class ChatScreen extends StatelessWidget {
                     }if (index == 1) {
                       // Tampilkan pesan sapaan jika index == 0
                       return ChatItem(
-                        text: "Saya akan membantu kamu mencari Quote tentang agile'",
+                        text: "1. Jika ingin menggunakan fitur voice input, tekan ikon mic sampai ikon mic tercoret atau berubah, lalu ucapkan keywordnya.\n"
+                            "\n2. tekan untuk mencopy qoute",
                         isMe: false,
                       );
                     }if (index == 2) {
                       // Tampilkan pesan sapaan jika index == 0
                       return ChatItem(
-                        text: "Quote Agile seperti apa yang anda cari?",
+                        text: "ketikkan 'Hello'",
                         isMe: false,
                       );
                     } else {
-                      // Tampilkan pesan chat sebelumnya
+                      final chatIndex = index - 3;
+                      final chat = chats[chatIndex];
                       return ChatItem(
-                        text: chats[index - 3].message,
-                        isMe: chats[index - 3].isMe,
-
+                        text: chat.message,
+                        isMe: chat.isMe,
+                        onShare: true,
+                        // text: chats[index - 3].message,
+                        // isMe: chats[index - 3].isMe,
                       );
                     }
                   }
